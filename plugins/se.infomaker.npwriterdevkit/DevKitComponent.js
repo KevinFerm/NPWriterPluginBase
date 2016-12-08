@@ -36,20 +36,14 @@ class DevKitComponent extends Component {
      * @returns {*}
      */
     render($$) {
-        const el = $$('div').addClass('devkit')
+        const el = $$('div')
+        let template = require("./templates/DevKitComponent.pug")
+        let locals = {
+            label:"Devkit plugin loaded"
+        }
+        let html = template(locals)
 
-        el.append($$('h2').append(this.getLabel('Devkit plugin loaded')))
-        el.append($$('p').append(String(this.state.clickCount)))
-
-        let clickCount = this.state.clickCount
-
-        let button = $$('button').on('click', () => {
-            this.setState({
-                clickCount: clickCount+1
-            })
-        }).append('Click me')
-
-        el.append(button)
+        el.setInnerHTML(html)
 
         return el
     }

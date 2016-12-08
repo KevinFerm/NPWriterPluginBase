@@ -10,6 +10,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const pug = require("pug");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
@@ -42,6 +43,9 @@ module.exports = {
     ],
     module: {
         loaders: [
+            {
+                test: /\.pug$/, loader: "pug-loader"
+            },
           {
             test: /\.(png|woff|woff2|eot|ttf|svg)$/,
             loader: 'url-loader?limit=100000'
